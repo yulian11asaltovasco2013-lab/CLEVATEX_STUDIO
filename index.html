@@ -1,760 +1,802 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CLEVATEX STUDIO</title>
+<title>CLEVATEX STUDIO</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #070b14;
-            color: white;
-            overflow-x: hidden;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        /* NAVBAR */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 18px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(7, 11, 20, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            z-index: 1000;
-        }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #070b14;
+    color: white;
+    line-height: 1.6;
+}
 
-        .logo {
-            font-size: 23px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
+/* NAVBAR */
 
-        .logo span {
-            color: #00aaff;
-        }
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(7,11,20,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    z-index: 1000;
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 28px;
-        }
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 
-        nav a {
-            color: #ddd;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+.logo span {
+    color: #00aaff;
+}
 
-        nav a:hover {
-            color: #00aaff;
-        }
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin-left: 25px;
+    transition: 0.3s;
+}
 
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 120px 20px 60px;
-            position: relative;
-            overflow: hidden;
-        }
+nav a:hover {
+    color: #00aaff;
+}
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: #0077ff;
-            filter: blur(180px);
-            opacity: 0.15;
-            border-radius: 50%;
-        }
+/* HERO */
 
-        .hero-content {
-            position: relative;
-            max-width: 850px;
-        }
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(0,170,255,0.18), transparent 35%),
+        #070b14;
+}
 
-        .hero h1 {
-            font-size: clamp(45px, 9vw, 90px);
-            margin-bottom: 20px;
-            font-weight: 900;
-        }
+.hero-content {
+    max-width: 850px;
+}
 
-        .hero h1 span {
-            color: #00aaff;
-        }
+.hero h1 {
+    font-size: clamp(45px, 9vw, 90px);
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
 
-        .hero p {
-            font-size: 20px;
-            line-height: 1.6;
-            color: #b8c0cc;
-            max-width: 650px;
-            margin: auto;
-        }
+.hero h1 span {
+    color: #00aaff;
+}
 
-        .buttons {
-            margin-top: 35px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+.hero p {
+    color: #aeb8c8;
+    font-size: 19px;
+    max-width: 650px;
+    margin: auto;
+}
 
-        .btn {
-            display: inline-block;
-            padding: 15px 25px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+.hero-button {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 15px 30px;
+    border-radius: 10px;
+    background: #00aaff;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-        .btn-primary {
-            background: #00aaff;
-            color: white;
-            box-shadow: 0 0 25px rgba(0,170,255,0.3);
-        }
+.hero-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,170,255,0.35);
+}
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 35px rgba(0,170,255,0.6);
-        }
+/* SECCIONES */
 
-        .btn-secondary {
-            border: 1px solid #334155;
-            color: white;
-        }
+section {
+    padding: 90px 7%;
+}
 
-        .btn-secondary:hover {
-            border-color: #00aaff;
-            color: #00aaff;
-        }
+.section-title {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 15px;
+}
 
-        /* SECTIONS */
-        section {
-            padding: 100px 7%;
-        }
+.section-subtitle {
+    text-align: center;
+    color: #8e9aaa;
+    margin-bottom: 50px;
+}
 
-        .section-title {
-            text-align: center;
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
+/* SERVICIOS */
 
-        .section-description {
-            text-align: center;
-            color: #9ca3af;
-            margin-bottom: 50px;
-        }
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
 
-        /* SERVICES */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
+.service-card {
+    background: #0d1422;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 30px;
+    transition: 0.3s;
+}
 
-        .card {
-            background: #0d1422;
-            border: 1px solid #1c293d;
-            padding: 30px 22px;
-            border-radius: 18px;
-            transition: 0.3s;
-        }
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: #00aaff;
+    box-shadow: 0 15px 40px rgba(0,170,255,0.12);
+}
 
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: #00aaff;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
+.service-icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
 
-        .icon {
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
+.service-card h3 {
+    margin-bottom: 10px;
+}
 
-        .card h3 {
-            margin-bottom: 12px;
-            font-size: 22px;
-        }
+.service-card p {
+    color: #9da8b8;
+}
 
-        .card p {
-            color: #9ca3af;
-            line-height: 1.6;
-        }
+.service-price {
+    margin-top: 20px;
+    color: #00aaff;
+    font-size: 22px;
+    font-weight: bold;
+}
 
-        /* PROCESS */
-        .process {
-            max-width: 900px;
-            margin: auto;
-            display: grid;
-            gap: 18px;
-        }
+/* PROCESO */
 
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: #0d1422;
-            padding: 22px;
-            border-radius: 15px;
-            border: 1px solid #1c293d;
-        }
+.process {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+}
 
-        .number {
-            min-width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #00aaff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-        }
+.process-card {
+    text-align: center;
+    padding: 30px;
+}
 
-        .step p {
-            color: #9ca3af;
-            margin-top: 5px;
-        }
+.process-number {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #00aaff;
+    font-size: 20px;
+    font-weight: bold;
+}
 
-        /* PLANS */
-        .plans {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            max-width: 1000px;
-            margin: auto;
-        }
+.process-card p {
+    color: #929daf;
+    margin-top: 8px;
+}
 
-        .plan {
-            background: #0d1422;
-            border: 1px solid #1c293d;
-            border-radius: 20px;
-            padding: 35px;
-            text-align: center;
-        }
+/* PLANES */
 
-        .plan.featured {
-            border-color: #00aaff;
-            transform: scale(1.03);
-            box-shadow: 0 0 35px rgba(0,170,255,0.15);
-        }
+.plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
 
-        .plan h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
+.plan {
+    background: #0d1422;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 35px;
+    transition: 0.3s;
+}
 
-        .price {
-            font-size: 36px;
-            font-weight: bold;
-            color: #00aaff;
-            margin-bottom: 20px;
-        }
+.plan:hover {
+    transform: translateY(-8px);
+    border-color: #00aaff;
+}
 
-        .plan p {
-            color: #9ca3af;
-            line-height: 1.7;
-        }
+.plan.featured {
+    border: 2px solid #00aaff;
+    transform: scale(1.03);
+}
 
-        /* CONTACT */
-        .contact {
-            text-align: center;
-            background: linear-gradient(
-                180deg,
-                #070b14,
-                #0b1728
-            );
-        }
+.plan h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
 
-        .contact h2 {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
+.plan-price {
+    font-size: 34px;
+    font-weight: bold;
+    color: #00aaff;
+    margin: 15px 0 25px;
+}
 
-        .contact p {
-            color: #9ca3af;
-            margin-bottom: 30px;
-        }
+.plan ul {
+    list-style: none;
+}
 
-        /* FOOTER */
-        footer {
-            padding: 30px 7%;
-            text-align: center;
-            color: #697386;
-            border-top: 1px solid #182334;
-        }
+.plan li {
+    margin: 13px 0;
+    color: #b8c1cf;
+}
 
-        /* WHATSAPP */
-        .whatsapp {
-            position: fixed;
-            right: 22px;
-            bottom: 22px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #25D366;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 30px;
-            text-decoration: none;
-            box-shadow: 0 5px 25px rgba(37,211,102,0.35);
-            z-index: 999;
-            transition: 0.3s;
-        }
+.plan li::before {
+    content: "✓";
+    color: #00aaff;
+    margin-right: 10px;
+    font-weight: bold;
+}
 
-        .whatsapp:hover {
-            transform: scale(1.1);
-        }
+.plan-button {
+    display: block;
+    margin-top: 25px;
+    text-align: center;
+    padding: 13px;
+    border-radius: 9px;
+    background: #00aaff;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-        /* MOBILE */
-        @media (max-width: 850px) {
+.plan-button:hover {
+    background: #008bd1;
+}
 
-            nav {
-                padding: 16px 5%;
-            }
+/* CONTACTO */
 
-            nav ul {
-                display: none;
-            }
+.contact {
+    text-align: center;
+    background:
+        radial-gradient(circle at center, rgba(0,170,255,0.12), transparent 50%);
+}
 
-            .services {
-                grid-template-columns: repeat(2, 1fr);
-            }
+.contact p {
+    color: #9da8b8;
+    max-width: 600px;
+    margin: 15px auto;
+}
 
-            .plans {
-                grid-template-columns: 1fr;
-            }
+.whatsapp-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 16px 30px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-            .plan.featured {
-                transform: none;
-            }
-        }
+.whatsapp-button:hover {
+    transform: scale(1.05);
+}
 
-        @media (max-width: 550px) {
+/* FOOTER */
 
-            .services {
-                grid-template-columns: 1fr;
-            }
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #687385;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
 
-            section {
-                padding: 80px 5%;
-            }
+/* WHATSAPP FLOTANTE */
 
-            .hero p {
-                font-size: 17px;
-            }
+.whatsapp-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    z-index: 999;
+    transition: 0.3s;
+}
 
-            .section-title {
-                font-size: 32px;
-            }
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
 
-            .contact h2 {
-                font-size: 34px;
-            }
-        }
-    </style>
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    nav {
+        padding: 16px 5%;
+    }
+
+    nav a {
+        margin-left: 10px;
+        font-size: 13px;
+    }
+
+    section {
+        padding: 70px 5%;
+    }
+
+    .hero {
+        padding-top: 130px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .plan.featured {
+        transform: none;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <nav>
-        <div class="logo">
-            CLEVATEX<span>STUDIO</span>
-        </div>
+<!-- NAVBAR -->
 
-        <ul>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#proceso">Cómo trabajamos</a></li>
-            <li><a href="#planes">Planes</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
+<nav>
+    <div class="logo">
+        CLEVATEX<span>STUDIO</span>
+    </div>
 
+    <div>
+        <a href="#servicios">Servicios</a>
+        <a href="#planes">Planes</a>
+        <a href="#contacto">Contacto</a>
+    </div>
+</nav>
 
-    <!-- HERO -->
-    <section class="hero">
 
-        <div class="hero-content">
+<!-- HERO -->
 
-            <h1>
-                CLEVATEX
-                <span>STUDIO</span>
-            </h1>
+<section class="hero">
 
-            <p>
-                Creamos páginas web, catálogos digitales,
-                mini-juegos y proyectos personalizados.
-                Tecnología creada para convertir tus ideas en realidad.
-            </p>
+    <div class="hero-content">
 
-            <div class="buttons">
-
-                <a
-                    class="btn btn-primary"
-                    href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20información%20sobre%20sus%20servicios."
-                    target="_blank"
-                >
-                    💬 Hablar por WhatsApp
-                </a>
-
-                <a
-                    class="btn btn-secondary"
-                    href="#servicios"
-                >
-                    Ver servicios
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SERVICIOS -->
-    <section id="servicios">
-
-        <h2 class="section-title">
-            Nuestros servicios
-        </h2>
-
-        <p class="section-description">
-            Soluciones digitales sencillas, modernas y personalizadas.
-        </p>
-
-        <div class="services">
-
-            <div class="card">
-
-                <div class="icon">🌐</div>
-
-                <h3>
-                    Página web
-                </h3>
-
-                <p>
-                    Creamos páginas web modernas y adaptadas
-                    para mostrar tu negocio, proyecto o idea.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">🛍️</div>
-
-                <h3>
-                    Catálogo digital
-                </h3>
-
-                <p>
-                    Presenta tus productos o servicios de forma
-                    organizada y fácil de consultar desde el celular.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">🎮</div>
-
-                <h3>
-                    Mini-juegos
-                </h3>
-
-                <p>
-                    Creamos pequeños juegos interactivos
-                    para páginas web y proyectos.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">🧠</div>
-
-                <h3>
-                    Proyecto personalizado
-                </h3>
-
-                <p>
-                    ¿Tienes una idea diferente?
-                    Podemos convertirla en un proyecto digital.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PROCESO -->
-    <section id="proceso">
-
-        <h2 class="section-title">
-            ¿Cómo trabajamos?
-        </h2>
-
-        <p class="section-description">
-            Un proceso sencillo para transformar tu idea.
-        </p>
-
-        <div class="process">
-
-            <div class="step">
-
-                <div class="number">
-                    1
-                </div>
-
-                <div>
-                    <h3>
-                        Nos cuentas tu idea
-                    </h3>
-
-                    <p>
-                        Explícanos qué necesitas y qué quieres conseguir.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="number">
-                    2
-                </div>
-
-                <div>
-                    <h3>
-                        Planeamos el proyecto
-                    </h3>
-
-                    <p>
-                        Definimos las funciones, diseño y características.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="number">
-                    3
-                </div>
-
-                <div>
-                    <h3>
-                        Creamos el proyecto
-                    </h3>
-
-                    <p>
-                        Desarrollamos la página, catálogo, juego o proyecto.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="number">
-                    4
-                </div>
-
-                <div>
-                    <h3>
-                        Entregamos
-                    </h3>
-
-                    <p>
-                        Revisamos el resultado y realizamos los ajustes acordados.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PLANES -->
-    <section id="planes">
-
-        <h2 class="section-title">
-            Planes
-        </h2>
-
-        <p class="section-description">
-            Precios iniciales de referencia.
-        </p>
-
-        <div class="plans">
-
-            <div class="plan">
-
-                <h3>
-                    Básico
-                </h3>
-
-                <div class="price">
-                    $10K
-                </div>
-
-                <p>
-                    Página sencilla<br>
-                    Diseño adaptable<br>
-                    Información básica
-                </p>
-
-                <br>
-
-                <a
-                    class="btn btn-primary"
-                    href="https://wa.me/573019226952?text=Hola,%20me%20interesa%20el%20plan%20Básico%20de%20CLEVATEX%20STUDIO."
-                    target="_blank"
-                >
-                    Consultar
-                </a>
-
-            </div>
-
-
-            <div class="plan featured">
-
-                <h3>
-                    Profesional
-                </h3>
-
-                <div class="price">
-                    $25K
-                </div>
-
-                <p>
-                    Página más completa<br>
-                    Diseño personalizado<br>
-                    Animaciones<br>
-                    Funciones interactivas
-                </p>
-
-                <br>
-
-                <a
-                    class="btn btn-primary"
-                    href="https://wa.me/573019226952?text=Hola,%20me%20interesa%20el%20plan%20Profesional%20de%20CLEVATEX%20STUDIO."
-                    target="_blank"
-                >
-                    Consultar
-                </a>
-
-            </div>
-
-
-            <div class="plan">
-
-                <h3>
-                    Personalizado
-                </h3>
-
-                <div class="price">
-                    Cotizar
-                </div>
-
-                <p>
-                    Proyectos especiales<br>
-                    Mini-juegos<br>
-                    Catálogos<br>
-                    Sistemas personalizados
-                </p>
-
-                <br>
-
-                <a
-                    class="btn btn-primary"
-                    href="https://wa.me/573019226952?text=Hola,%20tengo%20un%20proyecto%20personalizado%20para%20CLEVATEX%20STUDIO."
-                    target="_blank"
-                >
-                    Cotizar
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACTO -->
-    <section
-        class="contact"
-        id="contacto"
-    >
-
-        <h2>
-            ¿Tienes una idea?
-        </h2>
+        <h1>
+            CLEVATEX <span>STUDIO</span>
+        </h1>
 
         <p>
-            Cuéntanos qué quieres crear y hablemos sobre tu proyecto.
+            Creamos páginas web, catálogos digitales,
+            mini-juegos y proyectos personalizados
+            para convertir tus ideas en experiencias digitales.
         </p>
 
-        <a
-            class="btn btn-primary"
-            href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20crear%20un%20proyecto."
-            target="_blank"
-        >
-            🚀 Empezar proyecto
+        <a class="hero-button" href="#servicios">
+            Ver servicios
         </a>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- FOOTER -->
-    <footer>
+<!-- SERVICIOS -->
 
-        © 2026 CLEVATEX STUDIO · Tecnología e ideas
+<section id="servicios">
 
-    </footer>
+    <h2 class="section-title">
+        Servicios
+    </h2>
+
+    <p class="section-subtitle">
+        Soluciones digitales para diferentes tipos de proyectos.
+    </p>
+
+    <div class="services">
+
+        <div class="service-card">
+
+            <div class="service-icon">🌐</div>
+
+            <h3>
+                Página web básica
+            </h3>
+
+            <p>
+                Una página sencilla y adaptable
+                para presentar tu negocio o proyecto.
+            </p>
+
+            <div class="service-price">
+                $30.000 COP
+            </div>
+
+        </div>
 
 
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
+        <div class="service-card">
+
+            <div class="service-icon">🌐</div>
+
+            <h3>
+                Página web profesional
+            </h3>
+
+            <p>
+                Sitios con varias secciones,
+                animaciones y diseño personalizado.
+            </p>
+
+            <div class="service-price">
+                $60.000 COP
+            </div>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">🛍️</div>
+
+            <h3>
+                Catálogo digital
+            </h3>
+
+            <p>
+                Catálogos digitales para mostrar
+                productos o servicios.
+            </p>
+
+            <div class="service-price">
+                $35.000 COP
+            </div>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">🎮</div>
+
+            <h3>
+                Mini-juego web
+            </h3>
+
+            <p>
+                Mini-juegos interactivos
+                desarrollados para navegador.
+            </p>
+
+            <div class="service-price">
+                $50.000 COP
+            </div>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">🧠</div>
+
+            <h3>
+                Proyecto personalizado
+            </h3>
+
+            <p>
+                Funciones y sistemas creados
+                según las necesidades del proyecto.
+            </p>
+
+            <div class="service-price">
+                Desde $80.000 COP
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROCESO -->
+
+<section>
+
+    <h2 class="section-title">
+        ¿Cómo trabajamos?
+    </h2>
+
+    <p class="section-subtitle">
+        Un proceso sencillo para convertir tu idea en realidad.
+    </p>
+
+    <div class="process">
+
+        <div class="process-card">
+
+            <div class="process-number">
+                1
+            </div>
+
+            <h3>
+                Idea
+            </h3>
+
+            <p>
+                Nos cuentas qué quieres crear.
+            </p>
+
+        </div>
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                2
+            </div>
+
+            <h3>
+                Diseño
+            </h3>
+
+            <p>
+                Planeamos la estructura y apariencia.
+            </p>
+
+        </div>
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                3
+            </div>
+
+            <h3>
+                Desarrollo
+            </h3>
+
+            <p>
+                Construimos tu proyecto.
+            </p>
+
+        </div>
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                4
+            </div>
+
+            <h3>
+                Entrega
+            </h3>
+
+            <p>
+                Revisamos el resultado y entregamos.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PLANES -->
+
+<section id="planes">
+
+    <h2 class="section-title">
+        Planes
+    </h2>
+
+    <p class="section-subtitle">
+        Elige la opción que mejor se adapte a tu proyecto.
+    </p>
+
+
+    <div class="plans">
+
+
+        <!-- BÁSICO -->
+
+        <div class="plan">
+
+            <h3>
+                BÁSICO
+            </h3>
+
+            <div class="plan-price">
+                $30.000
+            </div>
+
+            <ul>
+
+                <li>1 página</li>
+
+                <li>Diseño adaptable al celular</li>
+
+                <li>Información del negocio</li>
+
+                <li>Botón de WhatsApp</li>
+
+            </ul>
+
+            <a
+                class="plan-button"
+                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20el%20plan%20BÁSICO%20de%20$30.000"
+                target="_blank">
+
+                Elegir plan
+
+            </a>
+
+        </div>
+
+
+        <!-- PROFESIONAL -->
+
+        <div class="plan featured">
+
+            <h3>
+                PROFESIONAL
+            </h3>
+
+            <div class="plan-price">
+                $60.000
+            </div>
+
+            <ul>
+
+                <li>Varias secciones</li>
+
+                <li>Animaciones</li>
+
+                <li>Diseño personalizado</li>
+
+                <li>Botones interactivos</li>
+
+                <li>WhatsApp</li>
+
+            </ul>
+
+            <a
+                class="plan-button"
+                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20el%20plan%20PROFESIONAL%20de%20$60.000"
+                target="_blank">
+
+                Elegir plan
+
+            </a>
+
+        </div>
+
+
+        <!-- PERSONALIZADO -->
+
+        <div class="plan">
+
+            <h3>
+                PERSONALIZADO
+            </h3>
+
+            <div class="plan-price">
+                Desde $80.000
+            </div>
+
+            <ul>
+
+                <li>Mini-juegos</li>
+
+                <li>Catálogos</li>
+
+                <li>Sistemas especiales</li>
+
+                <li>Funciones hechas según el proyecto</li>
+
+            </ul>
+
+            <a
+                class="plan-button"
+                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20un%20PROYECTO%20PERSONALIZADO"
+                target="_blank">
+
+                Cotizar proyecto
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- CONTACTO -->
+
+<section class="contact" id="contacto">
+
+    <h2 class="section-title">
+        ¿Tienes una idea?
+    </h2>
+
+    <p>
+        Cuéntanos qué quieres crear y podemos
+        convertir tu idea en un proyecto digital.
+    </p>
+
     <a
-        class="whatsapp"
-        href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20información."
-        target="_blank"
-        aria-label="WhatsApp"
-    >
-        💬
+        class="whatsapp-button"
+        href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20crear%20un%20proyecto"
+        target="_blank">
+
+        💬 Contactar por WhatsApp
+
     </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 CLEVATEX STUDIO · Todos los derechos reservados.
+
+</footer>
+
+
+<!-- WHATSAPP FLOTANTE -->
+
+<a
+    class="whatsapp-float"
+    href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20información"
+    target="_blank"
+    aria-label="WhatsApp">
+
+    💬
+
+</a>
+
 
 </body>
 </html>
