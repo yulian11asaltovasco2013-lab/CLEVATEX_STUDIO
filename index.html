@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CLEVATEX STUDIO | Soluciones digitales</title>
+<title>CLEVATEX STUDIO</title>
 
 <style>
 
-/* =====================================================
-   CONFIGURACIÓN GENERAL
-===================================================== */
+/* =========================
+   GENERAL
+========================= */
 
 * {
     margin: 0;
@@ -23,7 +23,7 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     background: #050914;
     color: white;
     line-height: 1.6;
@@ -31,103 +31,72 @@ body {
 }
 
 a {
-    color: inherit;
+    text-decoration: none;
 }
 
-/* =====================================================
-   FONDO FUTURISTA
-===================================================== */
+section {
+    padding: 90px 7%;
+}
 
-body::before,
-body::after {
-    content: "";
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+/* =========================
+   FONDO
+========================= */
+
+.background-light {
     position: fixed;
-    width: 420px;
-    height: 420px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
     filter: blur(100px);
-    opacity: 0.18;
+    opacity: .15;
     pointer-events: none;
     z-index: -2;
 }
 
-body::before {
+.light-one {
     background: #008cff;
-    top: -160px;
-    left: -120px;
-    animation: luz1 8s ease-in-out infinite alternate;
+    top: -150px;
+    left: -100px;
+    animation: moveLight 8s infinite alternate;
 }
 
-body::after {
-    background: #6a00ff;
+.light-two {
+    background: #5c00ff;
     right: -150px;
     bottom: -150px;
-    animation: luz2 10s ease-in-out infinite alternate;
+    animation: moveLightTwo 10s infinite alternate;
 }
 
-@keyframes luz1 {
+@keyframes moveLight {
     from {
-        transform: translate(0, 0);
+        transform: translate(0,0);
     }
 
     to {
-        transform: translate(120px, 80px);
+        transform: translate(120px,100px);
     }
 }
 
-@keyframes luz2 {
+@keyframes moveLightTwo {
     from {
-        transform: translate(0, 0);
+        transform: translate(0,0);
     }
 
     to {
-        transform: translate(-100px, -70px);
+        transform: translate(-100px,-80px);
     }
 }
 
-/* =====================================================
-   PARTÍCULAS
-===================================================== */
 
-.particle {
-    position: fixed;
-    width: 3px;
-    height: 3px;
-    background: #00aaff;
-    border-radius: 50%;
-    opacity: 0.6;
-    pointer-events: none;
-    z-index: -1;
-    animation: flotar linear infinite;
-}
-
-.p1 { left: 8%; top: 20%; animation-duration: 7s; }
-.p2 { left: 20%; top: 70%; animation-duration: 9s; }
-.p3 { left: 35%; top: 35%; animation-duration: 6s; }
-.p4 { left: 50%; top: 80%; animation-duration: 11s; }
-.p5 { left: 65%; top: 25%; animation-duration: 8s; }
-.p6 { left: 78%; top: 65%; animation-duration: 10s; }
-.p7 { left: 90%; top: 30%; animation-duration: 7s; }
-
-@keyframes flotar {
-    0% {
-        transform: translateY(0);
-        opacity: 0.2;
-    }
-
-    50% {
-        opacity: 0.8;
-    }
-
-    100% {
-        transform: translateY(-100px);
-        opacity: 0.1;
-    }
-}
-
-/* =====================================================
+/* =========================
    NAVBAR
-===================================================== */
+========================= */
 
 nav {
     position: fixed;
@@ -135,22 +104,24 @@ nav {
     left: 0;
     width: 100%;
 
-    padding: 18px 7%;
+    height: 70px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    background: rgba(5, 9, 20, 0.82);
-    backdrop-filter: blur(16px);
+    padding: 0 7%;
 
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: rgba(5,9,20,.9);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
 
     z-index: 1000;
 }
 
 .logo {
-    font-size: 22px;
+    font-size: 21px;
     font-weight: bold;
     letter-spacing: 1px;
 }
@@ -160,21 +131,25 @@ nav {
     text-shadow: 0 0 15px #00aaff;
 }
 
-nav a {
-    color: #dce5f0;
-    text-decoration: none;
-    margin-left: 22px;
-    transition: 0.3s;
+.nav-links {
+    display: flex;
+    gap: 22px;
 }
 
-nav a:hover {
+.nav-links a {
+    color: #cbd5e1;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
     color: #00aaff;
-    text-shadow: 0 0 10px #00aaff;
 }
 
-/* =====================================================
+
+/* =========================
    HERO
-===================================================== */
+========================= */
 
 .hero {
     min-height: 100vh;
@@ -185,25 +160,83 @@ nav a:hover {
 
     text-align: center;
 
-    padding: 130px 20px 90px;
+    padding-top: 120px;
 
     background:
         radial-gradient(
-            circle at center,
-            rgba(0,170,255,0.14),
-            transparent 40%
+            circle,
+            rgba(0,170,255,.13),
+            transparent 45%
         );
 }
 
 .hero-content {
-    max-width: 900px;
-    animation: aparecer 1.2s ease;
+    max-width: 850px;
 }
 
-@keyframes aparecer {
+.hero h1 {
+    font-size: clamp(45px, 10vw, 85px);
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+
+    animation: heroAppear 1s ease;
+}
+
+.hero h1 span {
+    color: #00aaff;
+
+    text-shadow:
+        0 0 15px #00aaff,
+        0 0 40px rgba(0,170,255,.4);
+}
+
+.hero p {
+    color: #aeb8c8;
+    font-size: 18px;
+    max-width: 700px;
+    margin: auto;
+}
+
+.hero-buttons {
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-block;
+
+    padding: 14px 25px;
+
+    border-radius: 9px;
+
+    background: #00aaff;
+    color: white;
+
+    font-weight: bold;
+
+    transition: .3s;
+}
+
+.button:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 30px rgba(0,170,255,.25);
+}
+
+.button-outline {
+    background: transparent;
+    border: 1px solid #00aaff;
+}
+
+@keyframes heroAppear {
     from {
         opacity: 0;
-        transform: translateY(35px);
+        transform: translateY(30px);
     }
 
     to {
@@ -212,170 +245,69 @@ nav a:hover {
     }
 }
 
-.hero h1 {
-    font-size: clamp(45px, 9vw, 90px);
-    letter-spacing: 4px;
-    margin-bottom: 20px;
 
-    text-shadow:
-        0 0 20px rgba(0,170,255,0.25);
-}
-
-.hero h1 span {
-    color: #00aaff;
-
-    text-shadow:
-        0 0 15px #00aaff,
-        0 0 40px rgba(0,170,255,0.5);
-}
-
-.hero p {
-    color: #aeb8c8;
-    font-size: 19px;
-    max-width: 700px;
-    margin: auto;
-}
-
-.hero-buttons {
-    margin-top: 35px;
-
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.hero-button {
-    display: inline-block;
-
-    padding: 15px 30px;
-
-    border-radius: 10px;
-
-    background: #00aaff;
-
-    color: white;
-
-    text-decoration: none;
-
-    font-weight: bold;
-
-    transition: 0.3s;
-
-    box-shadow:
-        0 0 20px rgba(0,170,255,0.2);
-}
-
-.hero-button:hover {
-    transform: translateY(-5px) scale(1.03);
-
-    box-shadow:
-        0 0 25px rgba(0,170,255,0.5);
-}
-
-.hero-button.secondary {
-    background: transparent;
-
-    border: 1px solid #00aaff;
-}
-
-/* =====================================================
-   SECCIONES
-===================================================== */
-
-section {
-    padding: 100px 7%;
-}
+/* =========================
+   TÍTULOS
+========================= */
 
 .section-title {
     text-align: center;
-    font-size: 38px;
-    margin-bottom: 15px;
+    font-size: 36px;
+    margin-bottom: 12px;
 }
 
 .section-subtitle {
     text-align: center;
-    color: #8e9aaa;
-    margin-bottom: 50px;
+    color: #8f9aaa;
+    margin-bottom: 45px;
 }
 
-/* =====================================================
+
+/* =========================
    SERVICIOS
-===================================================== */
+========================= */
 
 .services {
+    max-width: 1100px;
+    margin: auto;
+
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(220px, 1fr));
+        repeat(auto-fit, minmax(220px,1fr));
 
-    gap: 25px;
+    gap: 22px;
 }
 
 .service-card {
-    position: relative;
+    padding: 28px;
+
+    border-radius: 17px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(15,25,42,0.95),
-            rgba(8,14,27,0.95)
+            #101a2c,
+            #080e1b
         );
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,.08);
 
-    border-radius: 18px;
-
-    padding: 30px;
-
-    overflow: hidden;
-
-    transition:
-        transform 0.4s,
-        border-color 0.4s,
-        box-shadow 0.4s;
-}
-
-.service-card::before {
-    content: "";
-
-    position: absolute;
-
-    top: -100%;
-    left: -50%;
-
-    width: 200%;
-    height: 200%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(0,170,255,0.08),
-            transparent
-        );
-
-    transform: rotate(25deg);
-
-    transition: 0.6s;
-}
-
-.service-card:hover::before {
-    top: 100%;
+    transition: .35s;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
 
     border-color: #00aaff;
 
     box-shadow:
-        0 15px 50px rgba(0,170,255,0.15);
+        0 15px 40px rgba(0,170,255,.12);
 }
 
-.service-icon {
-    font-size: 42px;
-    margin-bottom: 15px;
+.icon {
+    font-size: 38px;
+    margin-bottom: 12px;
 }
 
 .service-card h3 {
@@ -383,40 +315,34 @@ section {
 }
 
 .service-card p {
-    color: #9da8b8;
+    color: #9ba6b6;
+    font-size: 14px;
 }
 
-.service-price {
-    margin-top: 20px;
-
+.price {
     color: #00aaff;
 
-    font-size: 22px;
+    font-size: 21px;
 
     font-weight: bold;
 
-    text-shadow:
-        0 0 10px rgba(0,170,255,0.3);
+    margin-top: 18px;
 }
 
 .service-button {
     display: inline-block;
 
-    margin-top: 20px;
+    margin-top: 18px;
 
-    padding: 10px 15px;
+    padding: 9px 14px;
 
     border-radius: 8px;
 
-    background: rgba(0,170,255,0.12);
-
-    border: 1px solid rgba(0,170,255,0.4);
-
     color: #00aaff;
 
-    text-decoration: none;
+    border: 1px solid rgba(0,170,255,.4);
 
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .service-button:hover {
@@ -424,129 +350,106 @@ section {
     color: white;
 }
 
-/* =====================================================
+
+/* =========================
    PROCESO
-===================================================== */
+========================= */
 
 .process {
+    max-width: 1000px;
+    margin: auto;
+
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(200px, 1fr));
+        repeat(auto-fit,minmax(190px,1fr));
 
     gap: 25px;
 }
 
 .process-card {
     text-align: center;
-    padding: 30px;
 }
 
-.process-number {
-    width: 58px;
-    height: 58px;
+.number {
+    width: 55px;
+    height: 55px;
 
-    margin: 0 auto 20px;
+    margin: 0 auto 15px;
 
     border-radius: 50%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     background: #00aaff;
 
-    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     font-weight: bold;
 
     box-shadow:
-        0 0 25px rgba(0,170,255,0.35);
-
-    animation: pulso 2.5s infinite;
-}
-
-@keyframes pulso {
-    0%, 100% {
-        box-shadow:
-            0 0 15px rgba(0,170,255,0.25);
-    }
-
-    50% {
-        box-shadow:
-            0 0 30px rgba(0,170,255,0.65);
-    }
+        0 0 25px rgba(0,170,255,.35);
 }
 
 .process-card p {
-    color: #929daf;
-    margin-top: 8px;
+    color: #8f9aaa;
+    margin-top: 7px;
 }
 
-/* =====================================================
+
+/* =========================
    PLANES
-===================================================== */
+========================= */
 
 .plans {
+    max-width: 1050px;
+    margin: auto;
+
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(260px, 1fr));
+        repeat(auto-fit,minmax(260px,1fr));
 
     gap: 25px;
-
-    max-width: 1100px;
-
-    margin: auto;
 }
 
 .plan {
+    padding: 30px;
+
     background:
         linear-gradient(
             145deg,
-            rgba(15,25,42,0.95),
-            rgba(8,14,27,0.95)
+            #101a2c,
+            #080e1b
         );
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,.08);
 
-    border-radius: 20px;
+    border-radius: 18px;
 
-    padding: 35px;
-
-    transition: 0.4s;
+    transition: .35s;
 }
 
 .plan:hover {
-    transform: translateY(-10px);
-
+    transform: translateY(-8px);
     border-color: #00aaff;
-
-    box-shadow:
-        0 20px 50px rgba(0,170,255,0.12);
 }
 
 .plan.featured {
     border: 2px solid #00aaff;
 
     box-shadow:
-        0 0 30px rgba(0,170,255,0.12);
-
-    transform: scale(1.03);
-}
-
-.plan h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+        0 0 30px rgba(0,170,255,.12);
 }
 
 .plan-price {
-    font-size: 34px;
+    color: #00aaff;
+
+    font-size: 31px;
 
     font-weight: bold;
 
-    color: #00aaff;
-
-    margin: 15px 0 25px;
+    margin: 15px 0 20px;
 }
 
 .plan ul {
@@ -554,73 +457,57 @@ section {
 }
 
 .plan li {
-    margin: 13px 0;
-    color: #b8c1cf;
+    color: #b5bfce;
+    margin: 10px 0;
 }
 
 .plan li::before {
     content: "✓";
-
     color: #00aaff;
-
-    margin-right: 10px;
-
     font-weight: bold;
+    margin-right: 9px;
 }
 
 .plan-button {
     display: block;
 
-    margin-top: 25px;
-
     text-align: center;
 
-    padding: 13px;
+    margin-top: 25px;
 
-    border-radius: 9px;
+    padding: 12px;
+
+    border-radius: 8px;
 
     background: #00aaff;
 
     color: white;
 
-    text-decoration: none;
-
     font-weight: bold;
 
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .plan-button:hover {
     background: #008bd1;
-
-    box-shadow:
-        0 0 20px rgba(0,170,255,0.4);
 }
 
-/* =====================================================
+
+/* =========================
    FORMULARIO
-===================================================== */
+========================= */
 
-.form-container {
+.form-box {
     max-width: 750px;
-
     margin: auto;
 
-    padding: 35px;
+    padding: 30px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(15,25,42,0.96),
-            rgba(8,14,27,0.96)
-        );
+    border-radius: 18px;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    background: #0c1424;
 
-    border-radius: 20px;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,.08);
 }
 
 .form-group {
@@ -629,11 +516,7 @@ section {
 
 .form-group label {
     display: block;
-
     margin-bottom: 7px;
-
-    color: #dce5f0;
-
     font-weight: bold;
 }
 
@@ -642,26 +525,23 @@ section {
 .form-group textarea {
     width: 100%;
 
-    padding: 14px;
+    padding: 13px;
 
-    border-radius: 9px;
+    border-radius: 8px;
 
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,.1);
 
-    background: #080e1b;
+    background: #060b15;
 
     color: white;
 
     outline: none;
 
-    transition: 0.3s;
-
-    font-family: inherit;
+    font-family: Arial, sans-serif;
 }
 
 .form-group textarea {
     min-height: 130px;
-
     resize: vertical;
 }
 
@@ -671,137 +551,137 @@ section {
     border-color: #00aaff;
 
     box-shadow:
-        0 0 15px rgba(0,170,255,0.12);
+        0 0 12px rgba(0,170,255,.12);
 }
 
-.form-submit {
+.submit {
     width: 100%;
 
-    padding: 15px;
+    padding: 14px;
 
     border: none;
 
-    border-radius: 9px;
+    border-radius: 8px;
 
     background: #25D366;
 
     color: white;
 
-    font-size: 16px;
-
     font-weight: bold;
+
+    font-size: 16px;
 
     cursor: pointer;
 
-    transition: 0.3s;
+    transition: .3s;
 }
 
-.form-submit:hover {
+.submit:hover {
     transform: translateY(-3px);
-
-    box-shadow:
-        0 10px 30px rgba(37,211,102,0.2);
 }
 
-/* =====================================================
+.form-info {
+    text-align: center;
+
+    color: #788497;
+
+    font-size: 13px;
+
+    margin-top: 12px;
+}
+
+
+/* =========================
    FAQ
-===================================================== */
+========================= */
 
 .faq {
-    max-width: 850px;
+    max-width: 800px;
     margin: auto;
 }
 
 .faq-item {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    background: #0c1424;
 
-    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 10px;
 
     overflow: hidden;
-
-    background: rgba(13,20,34,0.9);
 }
 
 .faq-question {
     width: 100%;
 
-    padding: 18px 20px;
+    padding: 17px;
 
     background: transparent;
 
-    border: none;
-
     color: white;
 
-    text-align: left;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
+    border: none;
 
     display: flex;
 
     justify-content: space-between;
 
     align-items: center;
+
+    text-align: left;
+
+    font-weight: bold;
+
+    cursor: pointer;
 }
 
-.faq-question span {
+.faq-icon {
     color: #00aaff;
 
-    font-size: 22px;
+    font-size: 20px;
 
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .faq-answer {
-    max-height: 0;
+    display: none;
 
-    overflow: hidden;
+    padding: 0 17px 17px;
 
-    transition: max-height 0.4s ease;
+    color: #9ba6b6;
 
-    color: #9da8b8;
+    font-size: 14px;
 }
 
-.faq-answer p {
-    padding: 0 20px 20px;
+.faq-item.open .faq-answer {
+    display: block;
 }
 
-.faq-item.active .faq-answer {
-    max-height: 200px;
-}
-
-.faq-item.active .faq-question span {
+.faq-item.open .faq-icon {
     transform: rotate(45deg);
 }
 
-/* =====================================================
+
+/* =========================
    CONDICIONES
-===================================================== */
+========================= */
 
 .conditions {
-    max-width: 900px;
-
+    max-width: 850px;
     margin: auto;
 
-    background:
-        rgba(13,20,34,0.9);
+    padding: 30px;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    background: #0c1424;
 
-    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.08);
 
-    padding: 35px;
+    border-radius: 17px;
 }
 
 .conditions h3 {
     color: #00aaff;
-
     margin-bottom: 15px;
 }
 
@@ -811,99 +691,73 @@ section {
 
 .conditions li {
     color: #aeb8c8;
-
-    margin-bottom: 10px;
+    margin: 9px 0;
 }
 
-.conditions-note {
+.notice {
     margin-top: 20px;
 
     padding: 15px;
 
     border-left: 3px solid #00aaff;
 
-    background: rgba(0,170,255,0.06);
+    background: rgba(0,170,255,.06);
 
     color: #aeb8c8;
 }
 
-/* =====================================================
+
+/* =========================
    CONTACTO
-===================================================== */
+========================= */
 
 .contact {
     text-align: center;
 
     background:
         radial-gradient(
-            circle at center,
-            rgba(0,170,255,0.12),
+            circle,
+            rgba(0,170,255,.1),
             transparent 50%
         );
 }
 
 .contact p {
-    color: #9da8b8;
-
     max-width: 600px;
 
     margin: 15px auto;
+
+    color: #9ba6b6;
 }
 
-.whatsapp-button {
-    display: inline-block;
 
-    margin-top: 25px;
-
-    padding: 16px 30px;
-
-    background: #25D366;
-
-    color: white;
-
-    text-decoration: none;
-
-    border-radius: 10px;
-
-    font-weight: bold;
-
-    transition: 0.3s;
-}
-
-.whatsapp-button:hover {
-    transform: scale(1.05);
-
-    box-shadow:
-        0 10px 30px rgba(37,211,102,0.25);
-}
-
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 footer {
     text-align: center;
 
     padding: 30px;
 
-    color: #687385;
+    border-top: 1px solid rgba(255,255,255,.08);
 
-    border-top:
-        1px solid rgba(255,255,255,0.08);
+    color: #687385;
 }
 
-/* =====================================================
-   WHATSAPP FLOTANTE
-===================================================== */
 
-.whatsapp-float {
+/* =========================
+   WHATSAPP
+========================= */
+
+.whatsapp {
     position: fixed;
 
-    right: 20px;
-    bottom: 20px;
+    right: 18px;
+    bottom: 18px;
 
-    width: 60px;
-    height: 60px;
+    width: 58px;
+    height: 58px;
 
     border-radius: 50%;
 
@@ -911,63 +765,71 @@ footer {
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     color: white;
 
-    text-decoration: none;
-
-    font-size: 28px;
-
-    box-shadow:
-        0 8px 30px rgba(0,0,0,0.45);
+    font-size: 26px;
 
     z-index: 999;
 
-    transition: 0.3s;
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.4);
 
-    animation: whatsappPulse 2.5s infinite;
+    transition: .3s;
 }
 
-.whatsapp-float:hover {
-    transform: scale(1.12);
+.whatsapp:hover {
+    transform: scale(1.1);
 }
 
-@keyframes whatsappPulse {
-    0%, 100% {
-        box-shadow:
-            0 8px 30px rgba(0,0,0,0.45);
-    }
 
-    50% {
-        box-shadow:
-            0 8px 35px rgba(37,211,102,0.4);
-    }
+/* =========================
+   ANIMACIÓN SCROLL
+========================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
 }
 
-/* =====================================================
-   CELULAR
-===================================================== */
+.reveal.show {
+    opacity: 1;
 
-@media (max-width: 700px) {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media(max-width:700px) {
 
     nav {
-        padding: 15px 5%;
+        padding: 0 5%;
     }
 
-    nav a {
-        margin-left: 8px;
+    .nav-links {
+        gap: 8px;
+    }
 
-        font-size: 12px;
+    .nav-links a {
+        font-size: 11px;
     }
 
     section {
-        padding: 75px 5%;
+        padding: 70px 5%;
     }
 
-    .hero {
-        padding-top: 130px;
+    .hero h1 {
+        font-size: 48px;
     }
 
     .hero p {
@@ -978,8 +840,8 @@ footer {
         transform: none;
     }
 
-    .form-container {
-        padding: 25px 20px;
+    .form-box {
+        padding: 22px;
     }
 }
 
@@ -990,20 +852,15 @@ footer {
 <body>
 
 
-<!-- PARTÍCULAS -->
+<!-- FONDOS -->
 
-<div class="particle p1"></div>
-<div class="particle p2"></div>
-<div class="particle p3"></div>
-<div class="particle p4"></div>
-<div class="particle p5"></div>
-<div class="particle p6"></div>
-<div class="particle p7"></div>
+<div class="background-light light-one"></div>
+<div class="background-light light-two"></div>
 
 
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
+<!-- =========================
+     NAV
+========================= -->
 
 <nav>
 
@@ -1011,7 +868,7 @@ footer {
         CLEVATEX<span>STUDIO</span>
     </div>
 
-    <div>
+    <div class="nav-links">
 
         <a href="#servicios">
             Servicios
@@ -1030,9 +887,9 @@ footer {
 </nav>
 
 
-<!-- =====================================================
+<!-- =========================
      HERO
-===================================================== -->
+========================= -->
 
 <section class="hero">
 
@@ -1044,15 +901,14 @@ footer {
 
         <p>
             Creamos páginas web, catálogos digitales,
-            programas para negocios y soluciones
-            personalizadas para convertir ideas
-            en proyectos digitales.
+            programas para negocios y proyectos
+            personalizados.
         </p>
 
         <div class="hero-buttons">
 
             <a
-                class="hero-button"
+                class="button"
                 href="#servicios">
 
                 Ver servicios
@@ -1060,7 +916,7 @@ footer {
             </a>
 
             <a
-                class="hero-button secondary"
+                class="button button-outline"
                 href="#solicitud">
 
                 Solicitar proyecto
@@ -1074,9 +930,9 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      SERVICIOS
-===================================================== -->
+========================= -->
 
 <section id="servicios">
 
@@ -1085,39 +941,34 @@ footer {
     </h2>
 
     <p class="section-subtitle">
-        Soluciones digitales para negocios y proyectos.
+        Soluciones digitales para diferentes necesidades.
     </p>
 
 
     <div class="services">
 
 
-        <!-- WEB BÁSICA -->
+        <div class="service-card reveal">
 
-        <div class="service-card">
-
-            <div class="service-icon">
-                🌐
-            </div>
+            <div class="icon">🌐</div>
 
             <h3>
                 Página web básica
             </h3>
 
             <p>
-                Una página sencilla y adaptable
-                para presentar tu negocio,
-                información y servicios.
+                Una página para presentar
+                información de tu negocio.
             </p>
 
-            <div class="service-price">
+            <div class="price">
                 $30.000 COP
             </div>
 
             <a
                 class="service-button"
-                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20me%20interesa%20la%20P%C3%A1gina%20web%20b%C3%A1sica%20de%20%2430.000"
-                target="_blank">
+                target="_blank"
+                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20estoy%20interesado%20en%20una%20p%C3%A1gina%20web%20b%C3%A1sica%20de%20%2430.000">
 
                 Consultar
 
@@ -1126,31 +977,27 @@ footer {
         </div>
 
 
-        <!-- WEB PROFESIONAL -->
+        <div class="service-card reveal">
 
-        <div class="service-card">
-
-            <div class="service-icon">
-                🌐
-            </div>
+            <div class="icon">🌐</div>
 
             <h3>
                 Página web profesional
             </h3>
 
             <p>
-                Sitios con varias secciones,
+                Sitio con varias secciones,
                 animaciones y diseño personalizado.
             </p>
 
-            <div class="service-price">
+            <div class="price">
                 $60.000 COP
             </div>
 
             <a
                 class="service-button"
-                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20me%20interesa%20la%20P%C3%A1gina%20web%20profesional%20de%20%2460.000"
-                target="_blank">
+                target="_blank"
+                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20estoy%20interesado%20en%20una%20p%C3%A1gina%20web%20profesional%20de%20%2460.000">
 
                 Consultar
 
@@ -1159,31 +1006,27 @@ footer {
         </div>
 
 
-        <!-- CATÁLOGO -->
+        <div class="service-card reveal">
 
-        <div class="service-card">
-
-            <div class="service-icon">
-                🛍️
-            </div>
+            <div class="icon">🛍️</div>
 
             <h3>
                 Catálogo digital
             </h3>
 
             <p>
-                Catálogos digitales para mostrar
-                productos, precios y servicios.
+                Catálogos para mostrar productos,
+                precios y servicios.
             </p>
 
-            <div class="service-price">
+            <div class="price">
                 $35.000 COP
             </div>
 
             <a
                 class="service-button"
-                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20me%20interesa%20el%20Cat%C3%A1logo%20digital%20de%20%2435.000"
-                target="_blank">
+                target="_blank"
+                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20estoy%20interesado%20en%20un%20cat%C3%A1logo%20digital%20de%20%2435.000">
 
                 Consultar
 
@@ -1192,31 +1035,27 @@ footer {
         </div>
 
 
-        <!-- PROGRAMA -->
+        <div class="service-card reveal">
 
-        <div class="service-card">
-
-            <div class="service-icon">
-                💻
-            </div>
+            <div class="icon">💻</div>
 
             <h3>
                 Programa para el negocio
             </h3>
 
             <p>
-                Herramientas digitales para organizar
-                y administrar tareas del negocio.
+                Herramientas digitales para
+                organizar tareas del negocio.
             </p>
 
-            <div class="service-price">
+            <div class="price">
                 $50.000 COP
             </div>
 
             <a
                 class="service-button"
-                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20me%20interesa%20un%20Programa%20para%20mi%20negocio%20de%20%2450.000"
-                target="_blank">
+                target="_blank"
+                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20estoy%20interesado%20en%20un%20programa%20para%20mi%20negocio%20de%20%2450.000">
 
                 Consultar
 
@@ -1225,31 +1064,27 @@ footer {
         </div>
 
 
-        <!-- PERSONALIZADO -->
+        <div class="service-card reveal">
 
-        <div class="service-card">
-
-            <div class="service-icon">
-                🧠
-            </div>
+            <div class="icon">🧠</div>
 
             <h3>
                 Proyecto personalizado
             </h3>
 
             <p>
-                Sistemas y funciones creadas
-                específicamente para cada proyecto.
+                Funciones y sistemas creados
+                según las necesidades del proyecto.
             </p>
 
-            <div class="service-price">
+            <div class="price">
                 Desde $80.000 COP
             </div>
 
             <a
                 class="service-button"
-                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20me%20interesa%20un%20Proyecto%20personalizado"
-                target="_blank">
+                target="_blank"
+                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20estoy%20interesado%20en%20un%20proyecto%20personalizado">
 
                 Cotizar
 
@@ -1263,9 +1098,9 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      PROCESO
-===================================================== -->
+========================= -->
 
 <section>
 
@@ -1274,89 +1109,79 @@ footer {
     </h2>
 
     <p class="section-subtitle">
-        Un proceso sencillo y claro.
+        Desde la idea hasta la entrega.
     </p>
 
 
     <div class="process">
 
+        <div class="process-card reveal">
 
-        <div class="process-card">
-
-            <div class="process-number">
-                1
-            </div>
+            <div class="number">1</div>
 
             <h3>
                 Idea
             </h3>
 
             <p>
-                Nos cuentas qué necesitas.
+                Nos cuentas lo que necesitas.
             </p>
 
         </div>
 
 
-        <div class="process-card">
+        <div class="process-card reveal">
 
-            <div class="process-number">
-                2
-            </div>
+            <div class="number">2</div>
 
             <h3>
                 Planificación
             </h3>
 
             <p>
-                Definimos las funciones y estructura.
+                Definimos funciones y estructura.
             </p>
 
         </div>
 
 
-        <div class="process-card">
+        <div class="process-card reveal">
 
-            <div class="process-number">
-                3
-            </div>
+            <div class="number">3</div>
 
             <h3>
                 Desarrollo
             </h3>
 
             <p>
-                Construimos tu solución digital.
+                Construimos el proyecto.
             </p>
 
         </div>
 
 
-        <div class="process-card">
+        <div class="process-card reveal">
 
-            <div class="process-number">
-                4
-            </div>
+            <div class="number">4</div>
 
             <h3>
                 Entrega
             </h3>
 
             <p>
-                Revisamos y entregamos el proyecto.
+                Revisamos y entregamos.
             </p>
 
         </div>
-
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      PLANES
-===================================================== -->
+========================= -->
 
 <section id="planes">
 
@@ -1365,16 +1190,14 @@ footer {
     </h2>
 
     <p class="section-subtitle">
-        Opciones para diferentes necesidades.
+        Elige la opción que más se adapte a tu proyecto.
     </p>
 
 
     <div class="plans">
 
 
-        <!-- BÁSICO -->
-
-        <div class="plan">
+        <div class="plan reveal">
 
             <h3>
                 BÁSICO
@@ -1386,28 +1209,20 @@ footer {
 
             <ul>
 
-                <li>
-                    1 página
-                </li>
+                <li>1 página</li>
 
-                <li>
-                    Diseño adaptable al celular
-                </li>
+                <li>Diseño adaptable al celular</li>
 
-                <li>
-                    Información del negocio
-                </li>
+                <li>Información del negocio</li>
 
-                <li>
-                    Botón de WhatsApp
-                </li>
+                <li>Botón de WhatsApp</li>
 
             </ul>
 
             <a
                 class="plan-button"
-                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20el%20plan%20B%C3%81SICO%20de%20%2430.000"
-                target="_blank">
+                target="_blank"
+                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20el%20plan%20B%C3%81SICO%20de%20%2430.000">
 
                 Elegir plan
 
@@ -1416,9 +1231,7 @@ footer {
         </div>
 
 
-        <!-- PROFESIONAL -->
-
-        <div class="plan featured">
+        <div class="plan featured reveal">
 
             <h3>
                 PROFESIONAL
@@ -1430,32 +1243,22 @@ footer {
 
             <ul>
 
-                <li>
-                    Varias secciones
-                </li>
+                <li>Varias secciones</li>
 
-                <li>
-                    Animaciones
-                </li>
+                <li>Animaciones</li>
 
-                <li>
-                    Diseño personalizado
-                </li>
+                <li>Diseño personalizado</li>
 
-                <li>
-                    Botones interactivos
-                </li>
+                <li>Botones interactivos</li>
 
-                <li>
-                    WhatsApp
-                </li>
+                <li>WhatsApp</li>
 
             </ul>
 
             <a
                 class="plan-button"
-                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20el%20plan%20PROFESIONAL%20de%20%2460.000"
-                target="_blank">
+                target="_blank"
+                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20el%20plan%20PROFESIONAL%20de%20%2460.000">
 
                 Elegir plan
 
@@ -1464,9 +1267,7 @@ footer {
         </div>
 
 
-        <!-- PERSONALIZADO -->
-
-        <div class="plan">
+        <div class="plan reveal">
 
             <h3>
                 PERSONALIZADO
@@ -1478,34 +1279,24 @@ footer {
 
             <ul>
 
-                <li>
-                    Catálogos
-                </li>
+                <li>Catálogos</li>
 
-                <li>
-                    Programas para negocios
-                </li>
+                <li>Programas para negocios</li>
 
-                <li>
-                    Sistemas especiales
-                </li>
+                <li>Sistemas especiales</li>
 
-                <li>
-                    Formularios y herramientas
-                </li>
+                <li>Formularios y herramientas</li>
 
-                <li>
-                    Funciones según el proyecto
-                </li>
+                <li>Funciones según el proyecto</li>
 
             </ul>
 
             <a
                 class="plan-button"
-                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20un%20proyecto%20PERSONALIZADO"
-                target="_blank">
+                target="_blank"
+                href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20un%20proyecto%20PERSONALIZADO">
 
-                Cotizar proyecto
+                Cotizar
 
             </a>
 
@@ -1517,9 +1308,9 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      FORMULARIO
-===================================================== -->
+========================= -->
 
 <section id="solicitud">
 
@@ -1528,24 +1319,25 @@ footer {
     </h2>
 
     <p class="section-subtitle">
-        Cuéntanos qué necesitas y te contactaremos por WhatsApp.
+        Completa los datos y se abrirá WhatsApp con tu solicitud.
     </p>
 
 
-    <div class="form-container">
+    <div class="form-box reveal">
 
         <form id="projectForm">
 
+
             <div class="form-group">
 
-                <label for="nombre">
-                    Tu nombre
+                <label for="name">
+                    Nombre
                 </label>
 
                 <input
+                    id="name"
                     type="text"
-                    id="nombre"
-                    placeholder="Ej: Juan"
+                    placeholder="Tu nombre"
                     required>
 
             </div>
@@ -1553,36 +1345,36 @@ footer {
 
             <div class="form-group">
 
-                <label for="servicio">
-                    ¿Qué necesitas?
+                <label for="service">
+                    Servicio
                 </label>
 
                 <select
-                    id="servicio"
+                    id="service"
                     required>
 
                     <option value="">
                         Selecciona un servicio
                     </option>
 
-                    <option>
-                        Página web básica - $30.000
+                    <option value="Página web básica - $30.000 COP">
+                        Página web básica - $30.000 COP
                     </option>
 
-                    <option>
-                        Página web profesional - $60.000
+                    <option value="Página web profesional - $60.000 COP">
+                        Página web profesional - $60.000 COP
                     </option>
 
-                    <option>
-                        Catálogo digital - $35.000
+                    <option value="Catálogo digital - $35.000 COP">
+                        Catálogo digital - $35.000 COP
                     </option>
 
-                    <option>
-                        Programa para el negocio - $50.000
+                    <option value="Programa para el negocio - $50.000 COP">
+                        Programa para el negocio - $50.000 COP
                     </option>
 
-                    <option>
-                        Proyecto personalizado - Desde $80.000
+                    <option value="Proyecto personalizado - Desde $80.000 COP">
+                        Proyecto personalizado - Desde $80.000 COP
                     </option>
 
                 </select>
@@ -1592,25 +1384,32 @@ footer {
 
             <div class="form-group">
 
-                <label for="descripcion">
-                    Cuéntanos sobre tu proyecto
+                <label for="description">
+                    Describe tu proyecto
                 </label>
 
                 <textarea
-                    id="descripcion"
-                    placeholder="Escribe qué quieres que hagamos..."
+                    id="description"
+                    placeholder="¿Qué quieres que hagamos?"
                     required></textarea>
 
             </div>
 
 
             <button
-                class="form-submit"
+                class="submit"
                 type="submit">
 
-                💬 Enviar solicitud por WhatsApp
+                💬 Enviar por WhatsApp
 
             </button>
+
+
+            <p class="form-info">
+                El formulario prepara un mensaje de WhatsApp.
+                No guardamos estos datos en esta página.
+            </p>
+
 
         </form>
 
@@ -1619,9 +1418,9 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      FAQ
-===================================================== -->
+========================= -->
 
 <section>
 
@@ -1630,7 +1429,7 @@ footer {
     </h2>
 
     <p class="section-subtitle">
-        Algunas respuestas antes de comenzar.
+        Información rápida sobre nuestros servicios.
     </p>
 
 
@@ -1643,17 +1442,15 @@ footer {
 
                 ¿Cuánto tarda un proyecto?
 
-                <span>+</span>
+                <span class="faq-icon">+</span>
 
             </button>
 
             <div class="faq-answer">
 
-                <p>
-                    El tiempo depende del tipo y tamaño
-                    del proyecto. Primero revisamos lo
-                    que necesitas y acordamos el plazo.
-                </p>
+                El tiempo depende de la complejidad
+                del proyecto y se acuerda antes
+                de comenzar.
 
             </div>
 
@@ -1666,17 +1463,14 @@ footer {
 
                 ¿Puedo pedir cambios?
 
-                <span>+</span>
+                <span class="faq-icon">+</span>
 
             </button>
 
             <div class="faq-answer">
 
-                <p>
-                    Sí. Los cambios se coordinan durante
-                    el desarrollo según el alcance
-                    acordado del proyecto.
-                </p>
+                Sí. Los cambios se coordinan durante
+                el desarrollo según el alcance acordado.
 
             </div>
 
@@ -1687,19 +1481,16 @@ footer {
 
             <button class="faq-question">
 
-                ¿Puedo pedir algo que no aparezca en los servicios?
+                ¿Puedo pedir algo diferente?
 
-                <span>+</span>
+                <span class="faq-icon">+</span>
 
             </button>
 
             <div class="faq-answer">
 
-                <p>
-                    Sí. Puedes solicitar un proyecto
-                    personalizado y revisaremos qué
-                    funciones necesitas.
-                </p>
+                Sí. Puedes solicitar un proyecto
+                personalizado y explicar qué necesitas.
 
             </div>
 
@@ -1710,19 +1501,17 @@ footer {
 
             <button class="faq-question">
 
-                ¿El precio puede cambiar?
+                ¿El precio siempre es el mismo?
 
-                <span>+</span>
+                <span class="faq-icon">+</span>
 
             </button>
 
             <div class="faq-answer">
 
-                <p>
-                    Los precios mostrados son iniciales.
-                    Un proyecto con funciones adicionales
-                    puede tener un precio diferente.
-                </p>
+                Los precios publicados son iniciales.
+                Funciones adicionales pueden cambiar
+                el precio final.
 
             </div>
 
@@ -1734,9 +1523,9 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CONDICIONES
-===================================================== -->
+========================= -->
 
 <section>
 
@@ -1745,55 +1534,46 @@ footer {
     </h2>
 
     <p class="section-subtitle">
-        Queremos que el proyecto sea claro desde el principio.
+        Todo se define antes de comenzar.
     </p>
 
 
-    <div class="conditions">
+    <div class="conditions reveal">
 
         <h3>
-            🔒 Antes de comenzar
+            🔒 Importante
         </h3>
 
         <ul>
 
             <li>
-                Primero revisamos la idea y las funciones necesarias.
+                Primero revisamos la idea del proyecto.
             </li>
 
             <li>
-                El precio final se confirma antes de iniciar el desarrollo.
+                Se confirma el precio antes de comenzar.
             </li>
 
             <li>
-                Los precios publicados son precios iniciales.
+                Se acuerdan las funciones que tendrá el proyecto.
             </li>
 
             <li>
-                Funciones adicionales pueden modificar el precio.
+                El tiempo depende de la complejidad.
             </li>
 
             <li>
-                El tiempo de entrega depende de la complejidad del proyecto.
-            </li>
-
-            <li>
-                Los cambios importantes que agreguen nuevas funciones
-                pueden requerir un costo adicional.
+                Nuevas funciones pueden modificar el precio.
             </li>
 
         </ul>
 
 
-        <div class="conditions-note">
-
-            <strong>
-                Importante:
-            </strong>
+        <div class="notice">
 
             Cada proyecto se revisa individualmente
-            para confirmar precio, funciones y tiempo
-            antes de comenzar.
+            para definir sus características,
+            precio y tiempo de desarrollo.
 
         </div>
 
@@ -1802,13 +1582,11 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CONTACTO
-===================================================== -->
+========================= -->
 
-<section
-    class="contact"
-    id="contacto">
+<section class="contact">
 
     <h2 class="section-title">
         ¿Tienes una idea?
@@ -1816,15 +1594,13 @@ footer {
 
     <p>
         Cuéntanos qué quieres crear
-        y podemos convertir tu idea
-        en una solución digital.
+        y revisaremos tu proyecto.
     </p>
 
-
     <a
-        class="whatsapp-button"
-        href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios"
-        target="_blank">
+        class="button"
+        target="_blank"
+        href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios">
 
         💬 Contactar por WhatsApp
 
@@ -1833,9 +1609,9 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      FOOTER
-===================================================== -->
+========================= -->
 
 <footer>
 
@@ -1844,95 +1620,107 @@ footer {
 </footer>
 
 
-<!-- =====================================================
+<!-- =========================
      WHATSAPP FLOTANTE
-===================================================== -->
+========================= -->
 
 <a
-    class="whatsapp-float"
-    href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20informaci%C3%B3n"
+    class="whatsapp"
     target="_blank"
-    aria-label="WhatsApp">
+    href="https://wa.me/573019226952?text=Hola%20CLEVATEX%20STUDIO,%20quiero%20informaci%C3%B3n">
 
     💬
 
 </a>
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
 
-/* =====================================================
-   FORMULARIO → WHATSAPP
-===================================================== */
+/* =========================================
+   FORMULARIO
+========================================= */
 
-document
-.getElementById("projectForm")
-.addEventListener("submit", function(event) {
+const form =
+    document.getElementById("projectForm");
+
+form.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
-    const nombre =
-        document.getElementById("nombre").value;
+    const name =
+        document.getElementById("name").value.trim();
 
-    const servicio =
-        document.getElementById("servicio").value;
+    const service =
+        document.getElementById("service").value;
 
-    const descripcion =
-        document.getElementById("descripcion").value;
+    const description =
+        document.getElementById("description").value.trim();
 
-    const mensaje =
+
+    if (!name || !service || !description) {
+
+        alert("Por favor completa todos los campos.");
+
+        return;
+
+    }
+
+
+    const message =
         "Hola CLEVATEX STUDIO.%0A%0A" +
-        "Mi nombre es: " +
-        encodeURIComponent(nombre) +
+        "Nombre: " +
+        encodeURIComponent(name) +
         "%0A%0A" +
-        "Servicio que necesito: " +
-        encodeURIComponent(servicio) +
+        "Servicio: " +
+        encodeURIComponent(service) +
         "%0A%0A" +
-        "Detalles del proyecto:%0A" +
-        encodeURIComponent(descripcion);
+        "Descripción del proyecto:%0A" +
+        encodeURIComponent(description);
 
-    const url =
+
+    const whatsappURL =
         "https://wa.me/573019226952?text=" +
-        mensaje;
+        message;
 
-    window.open(url, "_blank");
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
 
 });
 
 
-/* =====================================================
+/* =========================================
    FAQ
-===================================================== */
+========================================= */
 
-const preguntas =
+const faqQuestions =
     document.querySelectorAll(".faq-question");
 
-preguntas.forEach(function(pregunta) {
 
-    pregunta.addEventListener("click", function() {
+faqQuestions.forEach(function(button) {
+
+    button.addEventListener("click", function() {
 
         const item =
             this.parentElement;
 
-        item.classList.toggle("active");
+
+        item.classList.toggle("open");
 
     });
 
 });
 
 
-/* =====================================================
-   ANIMACIÓN AL HACER SCROLL
-===================================================== */
+/* =========================================
+   ANIMACIONES
+========================================= */
 
-const elementos =
-    document.querySelectorAll(
-        ".service-card, .plan, .process-card, .form-container, .faq-item, .conditions"
-    );
+const revealElements =
+    document.querySelectorAll(".reveal");
+
 
 const observer =
     new IntersectionObserver(
@@ -1942,10 +1730,9 @@ const observer =
 
                 if (entry.isIntersecting) {
 
-                    entry.target.style.opacity = "1";
+                    entry.target.classList.add("show");
 
-                    entry.target.style.transform =
-                        "translateY(0)";
+                    observer.unobserve(entry.target);
 
                 }
 
@@ -1958,19 +1745,12 @@ const observer =
     );
 
 
-elementos.forEach(function(elemento) {
+revealElements.forEach(function(element) {
 
-    elemento.style.opacity = "0";
-
-    elemento.style.transform =
-        "translateY(25px)";
-
-    elemento.style.transition =
-        "opacity 0.7s ease, transform 0.7s ease";
-
-    observer.observe(elemento);
+    observer.observe(element);
 
 });
+
 
 </script>
 
