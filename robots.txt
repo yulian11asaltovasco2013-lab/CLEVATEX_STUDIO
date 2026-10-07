@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yulian11asaltovasco2013-lab.github.io/CLEVATEX_STUDIO/sitemap.xml
